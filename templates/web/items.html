@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+
+<!-- header area starts -->
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- logo start -->
+                    <a href="index.html" class="logo">
+                        <img src="{% static 'assets/images/logo.png' %}" alt>
+                    </a>
+                    <!-- logo end -->
+                    <!-- menu start -->
+                    <ul class="nav">
+                        <li><a href="{% url 'web:index' %}" class="active">صفحه
+                                اصلی</a></li>
+                        <li><a href="{% url 'web:explore' %}">جستجو</a></li>
+                        <li><a href="{% url 'web:create' %}">ساخت توکن</a></li>
+                        <li><a href="{% url 'account:login' %}">ورود/ثبت نام</a></li>
+                    </ul>
+                    <a class="menu-trigger">
+                        <span>Menu</span>
+                    </a>
+                    <!-- menu end -->
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+<!-- header area end -->
+
+<div class="page-heading normal-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h6>فروشگاه Liberty</h6>
+                <h2>عنوان</h2>
+                <span>خانه > <a href="#">آیتم های {{category}}</a></span>
+                <div class="button">
+                    <div class="main-button">
+                        <a href="explore.html">جستجو آیتم ها</a>
+                    </div>
+                    <div class="border-button">
+                        <a href="create.html">ساخت توکن</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="discover-items" style="padding:150px 0px 120px 0px;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <div class="line-dec"></div>
+                    <h2><em>دسته بندی</em> {{category}}</h2>
+                </div>
+            </div>
+            {% for post in posts %}
+            <div class="col-lg-3">
+                <div class="item">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <span class="author">
+                                <img
+                                    src="{% static 'assets/images/author.jpg' %}"
+                                    alt
+                                    style="max-width: 50px; max-height: 50px; border-radius: 50%;">
+                            </span>
+                            <img
+                                src="{% static 'assets/images/discover-03.jpg' %}"
+                                alt
+                                style="border-radius: 20px;">
+                            <h4>{{post.title}}</h4>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="line-dec"></div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <span>پیشنهاد فعلی: <br><strong>{{post.Bid_now}}</strong></span>
+                                </div>
+                                <div class="col-6">
+                                    <span>پایان می رسد: <br><strong>{{post.date}}</strong></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-12">
+                            <div class="main-button">
+                                <a href="{% url 'store:details' num=post.pk %}">مشاهده</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

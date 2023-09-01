@@ -1,0 +1,222 @@
+{% extends 'base.html' %}
+{% load main_tags %}
+{% load static %}
+{% block body %}
+       <!-- header area starts -->
+       <header class="header-area header-sticky">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <nav class="main-nav">
+                        <!-- logo start -->
+                        <a href="index.html" class="logo">
+                            <img src="{% static 'assets/images/logo.png' %}" alt>
+                        </a>
+                        <!-- logo end -->
+                        <!-- menu start -->
+                        <ul class="nav">
+                            <li><a href="{% url 'web:index' %}" class="active">صفحه اصلی</a></li>
+                            <li><a href="{% url 'web:explore' %}">جستجو</a></li>
+                            <li><a href="{% url 'web:create' %}">ساخت توکن</a></li>
+                            <li><a href="{% url 'account:login' %}">ورود/ثبت نام</a></li>
+                        </ul>
+                        <a class="menu-trigger">
+                            <span>Menu</span>
+                        </a>
+                        <!-- menu end -->
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- header area end -->
+
+        <!-- main banner -->
+        <div class="main-banner">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6 align-self-center">
+                        <div class="header-text">
+                            <h6>کتابخانه توکن Liberty</h6>
+                            <h2>بخر،بفروش و NFT های تاپ رو جمع کن</h2>
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                                صنعت چاپ، و با استفاده
+                                از طراحان گرافیک است، چاپگرها و متون بلکه
+                                روزنامه و مجله در ستون و سطرآنچنان که لازم
+                                است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
+                                کاربردهای متنوع با هدف بهبود
+                                ابزارهای کاربردی می باشد، کتابهای زیادی در شصت و
+                                سه درصد گذشته حال و آینده،
+                                شناخت فراوان جامعه و متخصصان را می طلبد، تا با
+                                نرم افزارها شناخت بیشتری
+                                را برای طراحان رایانه ای علی الخصوص طراحان
+                                خلاقی، و فرهنگ پیشرو در
+                                زبان فارسی ایجاد کرد، در این صورت می توان امید
+                                داشت که تمام و دشواری موجود در ارائه راهکارها،
+                                و شرایط سخت تایپ به پایان رسد و زمان مورد نیاز
+                                شامل حروفچینی دستاوردهای اصلی،
+                                و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی
+                                اساسا مورد استفاده قرار گیرد.</p>
+                        </div>
+                        <div class="button">
+                            <div class="border-button">
+                                <a href="explore.html">NFT های برتر رو جستجو کن</a>
+                            </div>
+                            <div class="main-button">
+                                <a href="https://www.aparat.com/v/OjqM2"
+                                    target="_blank">با NFT آشنا شو</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 offset-lg-1">
+                        <div class="owl-banner owl-carousel">
+                            <div class="item">
+                                <img src="{% static 'assets/images/banner-01.png' %}" alt>
+                            </div>
+                            <div class="item">
+                                <img src="{% static 'assets/images/banner-02.png' %}" alt>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- main banner end -->
+
+        <!-- category collection -->
+        <div class="categories-collections">
+            <div class="container">
+                <div class="row">
+                    {% postcategories %}
+                    {% postcollection %}
+                </div>
+            </div>
+        </div>
+        <!-- category collections end -->
+
+        <!-- create nft -->
+        <div class="create-nft">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="section-heading">
+                            <div class="line-dec"></div>
+                            <h2>NFT خودت رو بساز و داخل مارکت قرار بده</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="main-button">
+                            <a href="{% url 'web:create' %}">الان توکن خود رو بساز</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="item first-item">
+                            <div class="number">
+                                <h6>1</h6>
+                            </div>
+                            <div class="icon">
+                                <img src="{% static 'assets/images/icon-02.png' %}" alt>
+                            </div>
+                            <h4>کیف پول خود را ایجاد کنید</h4>
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                                صنعت چاپ و با استفاده از طراحان گرافیک است
+                                چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                                سطرآنچنان که لازم است</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="item second-item">
+                            <div class="number">
+                                <h6>2</h6>
+                            </div>
+                            <div class="icon">
+                                <img src="{% static 'assets/images/icon-04.png' %}" alt>
+                            </div>
+                            <h4>NFT دیجیتال خود را اضافه کنید</h4>
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                                صنعت چاپ و با استفاده از طراحان گرافیک است
+                                چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                                سطرآنچنان که لازم است </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="item">
+                            <div class="icon">
+                                <img src="{% static 'assets/images/icon-06.png' %}" alt>
+                            </div>
+                            <h4>NFT خود را بفروشید کسب سود کنید</h4>
+                            <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                                صنعت چاپ و با استفاده از طراحان گرافیک است
+                                چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                                سطرآنچنان که لازم است </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- create nft end -->
+
+        <!-- currently market -->
+        <div class="currently-market">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="section-heading">
+                            <div class="line-dec"></div>
+                            <h2><em>آیتم</em>های اتفاقی در فروشگاه</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="filters">
+                            <ul>
+                                <li data-filter="*" class="active">همه</li>
+                                <li data-filter=".msc">موسیقی هنر</li>
+                                <li data-filter=".dig">هنر دیجیتال</li>
+                                <li data-filter=".blc">بلاکچین</li>
+                                <li data-filter=".vtr">مجازی</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="row grid">
+                            {% for post in posts %}
+                            <div class="col-lg-6 currently-market-item all msc">
+                                <div class="item">
+                                    <div class="left-image">
+                                        <img src="{{post.image.url}}"
+                                            alt
+                                            style="border: radius 20px; min-width: 195px;">
+                                    </div>
+                                    <div class="right-content">
+                                        <h4>{{post.title}}</h4>
+                                        <span class="author">
+                                            <img src="{% static 'assets/images/author.jpg' %}"
+                                                alt
+                                                style="max-width: 50px; border-radius: 50%;">
+                                            <h6>{{post.Artist.get_full_name}}<br><a href="{% url 'store:author' auth=post.Artist %}">{{post.Artist}}</a></h6>
+                                        </span>
+                                        <div class="line-dec"></div>
+                                        <span class="bid">
+                                            پیشنهاد فعلی <br><strong>{{post.Bid_now}}</strong><br><em>{{post.Bid_future}}</em>
+                                        </span>
+                                        <span class="ends">
+                                            به پایان می رسد <br><strong>{{post.token_id}}</strong><br><em>{{post.date}}</em>
+                                        </span>
+                                        <div class="text-button">
+                                            <a href="{% url 'store:details' num=post.pk %}">مشاهده آیتم
+                                                ها</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- currenrly market end -->
+
+    {% endblock %}

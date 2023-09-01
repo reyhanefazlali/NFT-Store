@@ -1,0 +1,320 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+        <!-- header area starts -->
+        <header class="header-area header-sticky">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <nav class="main-nav">
+                            <!-- logo start -->
+                            <a href="index.html" class="logo">
+                                <img src="{% static 'assets/images/logo.png' %}" alt>
+                            </a>
+                            <!-- logo end -->
+                            <!-- menu start -->
+                            <ul class="nav">
+                                <li><a href="{% url 'web:index' %}">صفحه اصلی</a></li>
+                                <li><a href="{% url 'web:explore' %}" class="active">جستجو</a></li>
+                                <li><a href="{% url 'web:create' %}">ساخت توکن</a></li>
+                                <li><a href="{% url 'account:login' %}">ورود/ثبت نام</a></li>
+                            </ul>
+                            <a class="menu-trigger">
+                                <span>Menu</span>
+                            </a>
+                            <!-- menu end -->
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- header area end -->
+
+        <div class="page-heading">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h6>فروشگاه Liberty</h6>
+                        <h2>عنوان</h2>
+                        <span>خانه > <a href="#">جستجو</a></span>
+                    </div>
+                </div>
+            </div>
+            <div class="featured-explore">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="owl-features owl-carousel">
+                                <div class="item">
+                                    <div class="thumb">
+                                        <img src="{% static 'assets/images/featured-01.jpg' %}"
+                                            alt style="border-radius: 20px;">
+                                        <div class="hover-effect">
+                                            <div class="content">
+                                                <h4>عنوان</h4>
+                                                <span class="author">
+                                                    <img
+                                                        src="{% static 'assets/images/author.jpg' %}"
+                                                        alt
+                                                        style="max-width : 50px; max-height : 50px; border-radius: 50%">
+                                                    <h6>هنرمند <br><a href="#">@username</a></h6>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="thumb">
+                                        <img src="{% static 'assets/images/featured-02.jpg' %}"
+                                            alt style="border-radius : 20px;">
+                                        <div class="hover-effect">
+                                            <div class="content">
+                                                <h4>عنوان</h4>
+                                                <span class="author">
+                                                    <img
+                                                        src="{% static 'assets/images/author.jpg' %}"
+                                                        alt
+                                                        style="max-width: 50px; max-height: 50px; border-radius: 50%;">
+                                                    <h6>هنرمند<br><a href="#">@username</a></h6>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="thumb">
+                                        <img src="{% static 'assets/images/featured-03.jpg' %}"
+                                            alt style="border-radius: 20px;">
+                                        <div class="hover-effect">
+                                            <div class="content">
+                                                <h4>عنوان</h4>
+                                                <span class="author">
+                                                    <img
+                                                        src="{% static 'assets/images/author.jpg' %}"
+                                                        alt
+                                                        style="max-width: 50px; max-height: 50px; border-radius: 50%;">
+                                                    <h6>هنرمند<br><a href="#">@username</a></h6>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="thumb">
+                                        <img src="{% static 'assets/images/featured-04.jpg' %}"
+                                            alt style="border-radius: 20px;">
+                                        <div class="hover-effect">
+                                            <div class="content">
+                                                <h4>عنوان</h4>
+                                                <span class="author">
+                                                    <img
+                                                        src="{% static 'assets/images/author.jpg' %}"
+                                                        alt
+                                                        style="max-width: 50px; max-height: 50px; border-radius: 50%;">
+                                                    <h6>هنرمند<br><a href="#">@username</a></h6>
+                                                </span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="discover-items">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-5">
+                        <div class="section-heading">
+                            <div class="line-dec"> </div>
+                            <h2>کشف <em>آیتم</em></h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-7">
+                        <form id="search-form" name="gs" method="GET"
+                            role="search" action="{% url 'web:search' %}">
+                            <div class="row">
+                                <div class="col-lg-4">
+                                    <fieldset>
+                                        <input type="text" name="s"
+                                            class="searchText"
+                                            placeholder="تایپ کنید..."
+                                            autocomplete="on" required>
+                                    </fieldset>
+                                </div>
+                                <div class="col-lg-2">
+                                    <fieldset>
+                                        <button  class="main-button">جستجو</button>
+                                    </fieldset>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    {% for post in posts %}
+                    <div class="col-lg-3">
+                        <div class="item">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <span class="author">
+                                        <img src="{% static 'assets/images/author.jpg' %}" alt
+                                            style="max-width: 50px; max-height: 50px; border-radius: 50%;">
+                                    </span>
+                                    <img src="{{post.image.url}}" alt
+                                        style="border-radius: 20px;">
+                                    <h4>{{post.title}}</h4>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="line-dec"></div>
+                                    <div class="row">
+                                        <div class="col-6">
+                                            <span>پیشنهاد فعلی: <br><strong>{{post.Bid_now}}</strong></span>
+                                        </div>
+                                        <div class="col-6">
+                                            <span>پایان می رسد: <br><strong>{{post.Bid_future}}</strong></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12">
+                                    <div class="main-button">
+                                        <a href="{% url 'store:details' num=post.pk %}">مشاهده</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="top-seller">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-heading">
+                            <div class="line-dec"></div>
+                            <h2>عنوان</h2>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="item">
+                                    <h4>1.</h4>
+                                    <img src="{% static 'assets/images/author.jpg' %}" alt
+                                        style="max-width: 50px; max-height: 50px; border-radius: 50%;">
+                                    <h6>هنرمند<br><a href="#">50,000 تومان</a></h6>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="item">
+                                    <h4>2.</h4>
+                                    <img src="{% static 'assets/images/author.jpg' %}" alt
+                                        style="max-width: 50px; max-height: 50px; border-radius: 50%;">
+                                    <h6>هنرمند<br><a href="#">50,000 تومان</a></h6>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="item">
+                                    <h4>3.</h4>
+                                    <img src="{% static 'assets/images/author.jpg' %}" alt
+                                        style="max-width: 50px; max-height: 50px; border-radius: 50%;">
+                                    <h6>هنرمند<br><a href="#">50,000 تومان</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="item">
+                                    <h4>4.</h4>
+                                    <img src="{% static 'assets/images/author.jpg' %}" alt
+                                        style="max-width: 50px; max-height: 50px; border-radius: 50%;">
+                                    <h6>هنرمند<br><a href="#">50,000 تومان</a></h6>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="item">
+                                    <h4>5.</h4>
+                                    <img src="{% static 'assets/images/author.jpg' %}" alt
+                                        style="max-width: 50px; max-height: 50px; border-radius: 50%;">
+                                    <h6>هنرمند<br><a href="#">50,000 تومان</a></h6>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="item">
+                                    <h4>6.</h4>
+                                    <img src="{% static 'assets/images/author.jpg' %}" alt
+                                        style="max-width: 50px; max-height: 50px; border-radius: 50%;">
+                                    <h6>هنرمند<br><a href="#">50,000 تومان</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="item">
+                                    <h4>7.</h4>
+                                    <img src="{% static 'assets/images/author.jpg' %}" alt
+                                        style="max-width: 50px; max-height: 50px; border-radius: 50%;">
+                                    <h6>هنرمند<br><a href="#">50,000 تومان</a></h6>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="item">
+                                    <h4>8.</h4>
+                                    <img src="{% static 'assets/images/author.jpg' %}" alt
+                                        style="max-width: 50px; max-height: 50px; border-radius: 50%;">
+                                    <h6>هنرمند<br><a href="#">50,000 تومان</a></h6>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="item">
+                                    <h4>9.</h4>
+                                    <img src="{% static 'assets/images/author.jpg' %}" alt
+                                        style="max-width: 50px; max-height: 50px; border-radius: 50%;">
+                                    <h6>هنرمند<br><a href="#">50,000 تومان</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-sm-6">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="item">
+                                    <h4>10.</h4>
+                                    <img src="{% static 'assets/images/author.jpg' %}" alt
+                                        style="max-width: 50px; max-height: 50px; border-radius: 50%;">
+                                    <h6>هنرمند<br><a href="#">50,000 تومان</a></h6>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="item">
+                                    <h4>11.</h4>
+                                    <img src="{% static 'assets/images/author.jpg' %}" alt
+                                        style="max-width: 50px; max-height: 50px; border-radius: 50%;">
+                                    <h6>هنرمند<br><a href="#">50,000 تومان</a></h6>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div class="item">
+                                    <h4>12.</h4>
+                                    <img src="{% static 'assets/images/author.jpg' %}" alt
+                                        style="max-width: 50px; max-height: 50px; border-radius: 50%;">
+                                    <h6>هنرمند<br><a href="#">50,000 تومان</a></h6>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+{% endblock %}

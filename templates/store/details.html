@@ -1,0 +1,293 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<!-- header area start -->
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- Logo start -->
+                    <a href="index.html" class="logo"><img
+                            src="{% static 'assets/images/logo.png' %}" alt></a>
+                    <!-- logo end -->
+                    <!-- menu start -->
+                    <ul class="nav">
+                        <li><a href="{% url 'web:index' %}">صفحه اصلی</a></li>
+                        <li><a href="{% url 'web:explore' %}">جستجو</a></li>
+                        <li><a href="{% url 'web:create' %}">ساخت توکن</a></li>
+                        <li><a href="{% url 'account:login' %}">ورود/ثبت نام</a></li>
+                    </ul>
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- Menu end -->
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- header area end -->
+
+<div class="page-heading normal-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h6>فروشگاه Liberty</h6>
+                <h2>عنوان</h2>
+                <span>خانه<a href="#">جزئیات آیتم</a></span>
+                <div class="button">
+                    <div class="main-button">
+                        <a href="{% url 'web:explore' %}">جستجو آیتم ها</a>
+                    </div>
+                    <div class="border-button">
+                        <a href="{% url 'web:create' %}">ساخت توکن</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="item-details-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <div class="line-dec"></div>
+                    <h2>نمایش جزئیات <em>برای آیتم</em></h2>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="left-image">
+                    <img src="{{post.image_details.url}}" alt
+                        style="border-radius: 20px;">
+                </div>
+            </div>
+            <div class="col-lg-5 align-self-center">
+                <h4>{{post.title}}</h4>
+                <span class="author">
+                    <img src="{% static 'assets/images/author-02.jpg'%}" alt
+                        style="max-width: 50px; border-radius: 50%;">
+                    <h6>هنرمند<br><a
+                            href="{% url 'store:author' auth=post.Artist %}">{{post.Artist}}</a></h6>
+                </span>
+                <p>{{post.content}}</p>
+                <div class="row">
+                    <div class="col-3">
+                        <span class="bid">
+                            پیشنهاد فعلی <br><strong>{{post.Bid_now}}</strong><br><em>{{post.Bid_future}}</em>
+                        </span>
+                    </div>
+                    <div class="col-4">
+                        <span class="owner">
+                            مالک<br><strong>{{post.Artist.get_full_name}}</strong><br><em>{{post.Artist}}</em>
+                        </span>
+                    </div>
+                    <div class="col-5">
+                        <span class="ends">
+                            به پایان می رسد<br><strong>{{post.token_id}}</strong><br><em>{{post.date}}</em>
+                        </span>
+                    </div>
+                </div>
+                <form id="BidDetail"
+                    action="{% url 'store:details' num=post.pk %}" method="post">
+                    {% csrf_token %}
+                    <label for="quantity-text">پیشنهاد شما:</label>
+                    <input name="customer_bid" type="text" id="customer_bid"
+                        placeholder="1 ETH" class="quantity-text" required>
+                    <button type="submit" id="form-submit"
+                        class="main-button">همین حالا ثبت کن</button>
+                </form>
+            </div>
+            <div class="col-lg-12">
+                <div class="current-bid">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="mini-heading">
+                                <h4>عنوان</h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <fieldset>
+                                <select name="Category"
+                                    id="chooseCategory"
+                                    class="form-select"
+                                    aria-label="Default select example"
+                                    onchange="this.form.click()">
+                                    <option selected>مرتب سازی بر
+                                        اساس:آخرین</option>
+                                    <option type="checkbox"
+                                        name="option1" value="old">مرتب
+                                        سازی بر اساس: قدیمی ترین</option>
+                                    <option value="low">مرتب سازی بر
+                                        اساس : کمترین</option>
+                                    <option value="high">مرتب سازی بر
+                                        اساس : بالاترین</option>
+                                </select>
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="item">
+                                <div class="left-img">
+                                    <img
+                                        src="{% static 'assets/images/current-01.jpg' %}"
+                                        alt>
+                                </div>
+                                <div class="right-content">
+                                    <h4>هنرمند</h4>
+                                    <a href="#">@username</a>
+                                    <div class="line-dec"></div>
+                                    <h6>پیشنهاد: <em>250,000 تومان </em></h6>
+                                    <span class="date">24/07/1401, 22:00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="item">
+                                <div class="left-img">
+                                    <img
+                                        src="{% static 'assets/images/current-02.jpg' %}"
+                                        alt>
+                                </div>
+                                <div class="right-content">
+                                    <h4>هنرمند</h4>
+                                    <a href="#">@username</a>
+                                    <div class="line-dec"></div>
+                                    <h6>پیشنهاد: <em>250,000 تومان </em></h6>
+                                    <span class="date">24/07/1401, 22:00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="item">
+                                <div class="left-img">
+                                    <img
+                                        src="{% static 'assets/images/current-03.jpg' %}"
+                                        alt>
+                                </div>
+                                <div class="right-content">
+                                    <h4>هنرمند</h4>
+                                    <a href="#">@username</a>
+                                    <div class="line-dec"></div>
+                                    <h6>پیشنهاد: <em>250,000 تومان </em></h6>
+                                    <span class="date">24/07/1401, 22:00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="item">
+                                <div class="left-img">
+                                    <img
+                                        src="{% static 'assets/images/current-02.jpg' %}"
+                                        alt>
+                                </div>
+                                <div class="right-content">
+                                    <h4>هنرمند</h4>
+                                    <a href="#">@username</a>
+                                    <div class="line-dec"></div>
+                                    <h6>پیشنهاد: <em>250,000 تومان </em></h6>
+                                    <span class="date">24/07/1401, 22:00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="item">
+                                <div class="left-img">
+                                    <img
+                                        src="{% static 'assets/images/current-04.jpg' %}"
+                                        alt>
+                                </div>
+                                <div class="right-content">
+                                    <h4>هنرمند</h4>
+                                    <a href="#">@username</a>
+                                    <div class="line-dec"></div>
+                                    <h6>پیشنهاد: <em>250,000 تومان </em></h6>
+                                    <span class="date">24/07/1401, 22:00</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-6">
+                            <div class="item">
+                                <div class="left-img">
+                                    <img
+                                        src="{% static 'assets/images/current-01.jpg' %}"
+                                        alt>
+                                </div>
+                                <div class="right-content">
+                                    <h4>هنرمند</h4>
+                                    <a href="#">@username</a>
+                                    <div class="line-dec"></div>
+                                    <h6>پیشنهاد: <em>250,000 تومان </em></h6>
+                                    <span class="date">24/07/1401, 22:00</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- create nft -->
+<div class="create-nft">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="section-heading">
+                    <div class="line-dec"></div>
+                    <h2>NFT خودت رو بساز و داخل مارکت قرار بده</h2>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="main-button">
+                    <a href="{% url 'web:create' %}">الان توکن خود رو بساز</a>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="item first-item">
+                    <div class="number">
+                        <h6>1</h6>
+                    </div>
+                    <div class="icon">
+                        <img src="{% static 'assets/images/icon-02.png' %}" alt>
+                    </div>
+                    <h4>کیف پول خود را ایجاد کنید</h4>
+                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                        صنعت چاپ و با استفاده از طراحان گرافیک است
+                        چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                        سطرآنچنان که لازم است</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="item second-item">
+                    <div class="number">
+                        <h6>2</h6>
+                    </div>
+                    <div class="icon">
+                        <img src="{% static 'assets/images/icon-04.png' %}" alt>
+                    </div>
+                    <h4>NFT دیجیتال خود را اضافه کنید</h4>
+                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                        صنعت چاپ و با استفاده از طراحان گرافیک است
+                        چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                        سطرآنچنان که لازم است </p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="item">
+                    <div class="icon">
+                        <img src="{% static 'assets/images/icon-06.png' %}" alt>
+                    </div>
+                    <h4>NFT خود را بفروشید کسب سود کنید</h4>
+                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                        صنعت چاپ و با استفاده از طراحان گرافیک است
+                        چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                        سطرآنچنان که لازم است </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

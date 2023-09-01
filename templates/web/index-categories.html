@@ -1,0 +1,28 @@
+<div class="col-lg-12">
+<div class="categories">
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="section-heading">
+                <div class="line-dec"></div>
+                <h2><em>دسته بندی</em> های ما را از
+                    اینجا دنبال کنید</h2>
+            </div>
+        </div>
+        {% for d in Dict %}
+            <div class="col-lg-2 col-sm-6">
+                <div class="item">
+                    <div class="icon">
+                        <img src="{{d.image.url}}"
+                            alt>
+                    </div>
+                    <h4>{{d.name}}</h4>
+                    <div class="icon-button">
+                        <a href="{% url 'web:category' cat=d.name %}"><i
+                                class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+</div>

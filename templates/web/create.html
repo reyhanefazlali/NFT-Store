@@ -1,0 +1,171 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<!-- header area start -->
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- Logo start -->
+                    <a href="index.html" class="logo"><img
+                            src="{% static 'assets/images/logo.png' %}" alt></a>
+                    <!-- logo end -->
+                    <!-- menu start -->
+                    <ul class="nav">
+                        <li><a href="{% url 'web:index' %}">صفحه اصلی</a></li>
+                        <li><a href="{% url 'web:explore' %}">جستجو</a></li>
+                        <li><a href="{% url 'web:create' %}" class="active">ساخت
+                                توکن</a></li>
+                        <li><a href="{% url 'account:login' %}">ورود/ثبت نام</a></li>
+                    </ul>
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- Menu end -->
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- header area end -->
+
+<div class="page-heading normal-space">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <h6>فروشگاه Liberty</h6>
+                <h2>عنوان</h2>
+                <span>خانه > <a href="#">جزئیات آیتم</a></span>
+                <div class="button">
+                    <div class="main-button">
+                        <a href="explore.html">جستجو آیتم ها</a>
+                    </div>
+                    <div class="border-button">
+                        <a href="create.html">ساخت توکن</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="item-details-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <div class="line-dec"></div>
+                    <h2><em>آیتم هات</em> رو اینجا پیاده کن</h2>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <form id="contact" action="{% url 'web:create' %}" method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <fieldset>
+                                <label for="title">عنوان آیتم</label>
+                                <input type="text" name="title"
+                                    id="title"
+                                    placeholder="Ex.Lyon King"
+                                    autocomplete="on" required>
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-4">
+                            <fieldset>
+                                <label for="discription">توضیحات</label>
+                                <input type="text"
+                                    name="discription"
+                                    placeholder="به ما ایده بدین"
+                                    autocomplete="on" required>
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-4">
+                            <fieldset>
+                                <label for="email">ایمیل شما</label>
+                                <input type="text" name="email"
+                                    id="email"
+                                    placeholder="مثال : maryam12@gmail.com"
+                                    autocomplete="on" required>
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-6">
+                            <fieldset>
+                                <label for="price">قیمت</label>
+                                <input type="number" name="price"
+                                    id="price"
+                                    placeholder="قیمت بر اساس کیفیت مثال : 0.06ETH"
+                                    autocomplete="on" required>
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-6">
+                            <fieldset>
+                                <label for="royalities">مزایا و امتیاز
+                                    ها</label>
+                                <input type="text"
+                                    name="benefit" id="royalities"
+                                    placeholder="حق امتیاز رایج 1-25%"
+                                    autocomplete="on" required>
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-4">
+                            <fieldset>
+                                <label for="file">فایل شما</label>
+                                <input type="file" name="upload">
+                            </fieldset>
+                        </div>
+                        <div class="col-lg-8">
+                            <fieldset>
+                                <button type="submit" id="form-submit"
+                                    class="orange-button">ارسال درخواست</button>
+                            </fieldset>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-12">
+                <div class="section-heading">
+                    <div class="line-dec"></div>
+                    <h2>پیش نمایش <em>آیتم</em> های شما</h2>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="left-image">
+                    <img src="{% static 'assets/images/create-yours.jpg' %}" alt
+                        style="border-radius: 20px;">
+                </div>
+            </div>
+            <div class="col-lg-5 align-self-center">
+                <h4>عنوان</h4>
+                <span class="author">
+                    <img src="{% static 'assets/images/author-02.jpg' %}" alt
+                        style="max-width: 50px; border-radius: 50%;">
+                    <h6>مهرداد <br> <a href="#">@username</a></h6>
+                </span>
+                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت
+                    چاپ و با استفاده از طراحان گرافیک است </p>
+                <div class="row">
+                    <div class="col-3">
+                        <span class="bid">
+                            پیشنهاد فعلی <br> <strong>(50,000 تومان)</strong><br><em>(80,000
+                                تومان)</em>
+                        </span>
+                    </div>
+                    <div class="col-4">
+                        <span class="owner">
+                            مالک <br><strong>علی رضایی</strong><br><em>@asmithee</em>
+                        </span>
+                    </div>
+                    <div class="col-5">
+                        <span class="ends">
+                            به پایان می رسد : <br><strong>3D 05H 20M 58S</strong><br><em>(1401,06,1402)</em>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

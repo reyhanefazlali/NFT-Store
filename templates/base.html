@@ -1,0 +1,83 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link
+            href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap"
+            rel="stylesheet">
+
+        <title>فروشگاه Liberty</title>
+
+        <!-- bootstrap core CSS -->
+        <link rel="stylesheet"
+            href="{% static 'vendor/bootstrap/css/bootstrap-rtl.css' %}">
+
+        <link rel="stylesheet"
+            href="{% static 'vendor/bootstrap/css/bootstrap.rtl.min.css' %}">
+
+        <!-- addictional CSS files -->
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+        <link rel="stylesheet"
+            href="https://unpkg.com/swiper@7/swiper-bundle.min.css" />
+        <link
+            href="https://cdn.jsdelivr.net/gh/rastikerdar/sahel-font@v3.4.0/dist/font-face.css"
+            rel="stylesheet" type="text/css">
+
+    </head>
+
+    <body>
+
+        <!-- preloader start -->
+
+        <div id="js-preloader" class="js-preloader">
+            <div class="preloader-inner">
+                <span class="dot">
+                    <div class="dots">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </span>
+            </div>
+        </div>
+
+        <!-- preloader ends -->
+        
+        {% block body %}
+
+        {% endblock %}
+
+        <!-- footer -->
+        <footer>
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <p>Copyright © 2022 <a href="#">Liberty</a> NFT
+                            Marketplace Co.,
+                            Ltd. All rights reserved. &nbsp;&nbsp; ساخته شده
+                            توسط ریحانه فضلعلی</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <!-- Scripts -->
+        <!-- Bootstrap core JavaScript -->
+        <script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+        <script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
+        <script src="{% static 'assets/js/isotope.min.js' %}"></script>
+        <script src="{% static 'assets/js/owl-carousel.js' %}"></script>
+
+        <script src="{% static 'assets/js/tabs.js' %}"></script>
+        <script src="{% static 'assets/js/popup.js' %}"></script>
+        <script src="{% static 'assets/js/custom.js' %}"></script>
+        
+    </body>
+</html>

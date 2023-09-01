@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block body %}
+<!-- header area start -->
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav">
+                    <!-- logo start -->
+                    <a href="index.html" class="logo">
+                        <img src="{% static 'assets/images/logo.png' %}" alt>
+                    </a>
+                    <!-- logo end -->
+
+                    <!-- menu start -->
+                    <ul class="nav">
+                        <li><a href="{% url 'web:index' %}">صفحه اصلی</a></li>
+                        <li><a href="{% url 'web:explore' %}">جستجو</a></li>
+                        <li><a href="{% url 'web:create' %}">ساخت توکن</a></li>
+                        
+                    </ul>
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+                    <!-- menu end -->
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- header area end -->
+
+<div class="item-details-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-heading" style="margin-top: 46px;">
+                    <div class="line-dec"></div>
+                    <h2>خوش آمدید</h2>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+            
+
+<div class="create-nft">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="section-heading">
+                    <div class="line-dec"></div>
+                    <h2>NFT خودت رو بساز و داخل مارکت قرار بده</h2>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="main-button">
+                    <a href="create.html">الان توکن خود رو بساز</a>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="item first-item">
+                    <div class="number">
+                        <h6>1</h6>
+                    </div>
+                    <div class="icon">
+                        <img src="{% static 'assets/images/icon-02.png' %}" alt>
+                    </div>
+                    <h4>کیف پول خود را ایجاد کنید</h4>
+                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                        صنعت چاپ و با استفاده از طراحان گرافیک است
+                        چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                        سطرآنچنان که لازم است</p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="item second-item">
+                    <div class="number">
+                        <h6>2</h6>
+                    </div>
+                    <div class="icon">
+                        <img src="{% static 'assets/images/icon-04.png' %}" alt>
+                    </div>
+                    <h4>NFT دیجیتال خود را اضافه کنید</h4>
+                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                        صنعت چاپ و با استفاده از طراحان گرافیک است
+                        چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                        سطرآنچنان که لازم است </p>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="item">
+                    <div class="icon">
+                        <img src="{% static 'assets/images/icon-06.png' %}" alt>
+                    </div>
+                    <h4>NFT خود را بفروشید کسب سود کنید</h4>
+                    <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از
+                        صنعت چاپ و با استفاده از طراحان گرافیک است
+                        چاپگرها و متون بلکه روزنامه و مجله در ستون و
+                        سطرآنچنان که لازم است </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
